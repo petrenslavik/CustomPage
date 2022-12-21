@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="HangfireExtensions\ManagementPage\Management.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="HangfireExtensions\ManagementPage\Resources\app.js" />
+    <None Remove="HangfireExtensions\ManagementPage\Resources\axios.min.js" />
+    <None Remove="HangfireExtensions\ManagementPage\Resources\style.css" />
+    <None Remove="HangfireExtensions\ManagementPage\Resources\vue.global.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="HangfireExtensions\ManagementPage\Resources\app.js" />
+    <EmbeddedResource Include="HangfireExtensions\ManagementPage\Resources\axios.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="HangfireExtensions\ManagementPage\Resources\style.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HangfireExtensions\ManagementPage\Resources\vue.global.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="HangfireExtensions\ManagementPage\Management.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Management.generated.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.7.32" />
+    <PackageReference Include="Hangfire.SqlServer" Version="1.7.32" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.32" />
+    <PackageReference Include="RazorGenerator.Mvc" Version="2.4.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="HangfireExtensions\ManagementPage\Management.generated.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Management.cshtml</DependentUpon>
+    </Compile>
+    <Compile Update="HangfireExtensions\ManagementPage\ManagementPageExtensions.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+
+</Project>

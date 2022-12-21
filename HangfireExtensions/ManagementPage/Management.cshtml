@@ -1,0 +1,72 @@
+﻿@* Generator: Template TypeVisibility: Internal GeneratePrettyNames: True *@
+@using CustomPage.HangfireExtensions.ManagementPage
+@using Hangfire.Dashboard
+@using Hangfire.Dashboard.Pages
+@using Newtonsoft.Json
+@inherits RazorPage
+
+@{
+    Layout = new LayoutPage("Management");
+
+    var tables = new List<Func<RazorPage, MenuItem>>();
+
+    foreach (var table in AvailableTables)
+    {
+        var segment = $"{ManagementPageExtensions.UrlPath}/{table.Name}";
+        tables.Add(page => new MenuItem(table.Name, page.Url.To(segment))
+                {
+                    Active = page.RequestPath.StartsWith(segment)
+                });
+    }
+
+    var data = ReadData(CurrentTable);
+}
+<link rel="stylesheet" type="text/css" href="@($"{ManagementPageExtensions.UrlPath[1..]}Resources/css/style.css")" />
+<script src="@($"{ManagementPageExtensions.UrlPath[1..]}Resources/js/vue.global.js")"></script>
+<script src="@($"{ManagementPageExtensions.UrlPath[1..]}Resources/js/axios.min.js")"></script>
+<script src="@($"{ManagementPageExtensions.UrlPath[1..]}Resources/js/app.js")"></script>
+<div class="row">
+    <div class="col-md-3">
+        @Html.SidebarMenu(tables)
+    </div>
+    <div class="col-md-9">
+        <h1 class="page-header">@(CurrentTable.Name ?? "Management")</h1>
+        @if (tables.Count == 0)
+        {
+            <div class="alert alert-warning">
+                No tables configured
+            </div>
+        }
+        else
+        {
+            <div id="app" data-rows="@JsonConvert.SerializeObject(data.Select(x=>JsonConvert.SerializeObject(x)))" data-save-url="@($"{ManagementPageExtensions.UrlPath[1..]}Actions/Save")" data-table-name="@CurrentTable.Name" class="js-jobs-list">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th class="min-width">№</th>
+                            <th>JSON</th>
+                            <th style="width: 5%"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="(row, index) in rows" class="js-jobs-list-row">
+                            <td>{{index + 1}}</td>
+                            <td class="word-break">
+                                <input type="text" v-model="rows[index]"/>
+                            </td>
+                            <td>
+                                <button role="button" class="management-button danger" @@click="remove(index)">Remove</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="buttons">
+                        <button role="button" @@click="add" class="management-button primary">Add</button>
+                        <button role="button" @@click="save" class="management-button success">Save</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
