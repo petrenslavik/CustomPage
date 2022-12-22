@@ -31,7 +31,7 @@ namespace CustomPage.HangfireExtensions.ManagementPage
 
         private static TableConfiguration[] BuildTableConfigurations()
         {
-            var serverSettingsFields = new[] { "ServerType", "ServerUrl", "Username", "Password" };
+            var serverSettingsFields = new[] { "SettingType", "SettingJson" };
             var serverSettings = new TableConfiguration()
             {
                 Name = "ServerSettings",
@@ -44,13 +44,12 @@ namespace CustomPage.HangfireExtensions.ManagementPage
                     foreach (var field in serverSettingsFields)
                     {
                         sb.Append("'");
-                        sb.Append(data[field]);
+                        sb.Append(data[field].ToString().Replace("'","''"));
                         sb.Append("'");
                         sb.Append(",");
                     }
-                    sb.Append("'");
-                    sb.Append(DateTimeOffset.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss"));
-                    sb.Append("'");
+
+                    sb.Remove(sb.Length - 1, 1);
                     return sb.ToString();
                 }
             };

@@ -4,11 +4,21 @@ function ready() {
     const { createApp } = Vue
     createApp({
         data() {
-            return {
+            var data = {
                 tableName: html.dataset.tableName,
-                rows: JSON.parse(html.dataset.rows),
-                saveUrl: html.dataset.saveUrl
+                row: JSON.parse(JSON.parse(html.dataset.rows)[0]),
+                saveUrl: html.dataset.saveUrl,
+                settings: {
+                    serverType: "",
+                    serverUrl: "",
+                    username: "",
+                    password: ""
+                }
+            };
+            if (data.row["SettingJson"]) {
+                data.settings = data.row["SettingJson"];
             }
+            return data;
         },
         methods: {
             remove(rowIndex) {
@@ -20,10 +30,9 @@ function ready() {
             save() {
                 var form_data = new FormData();
                 form_data.append("tableName", this.tableName);
-                
-                for (var index in this.rows) {
-                    form_data.append("data", this.rows[index]);
-                }
+                var newRow = Object.assign({}, this.row);
+                newRow["SettingJson"] = JSON.stringify(this.settings);
+                form_data.append("data", JSON.stringify(newRow));
 
                 var csrfHeader = $('meta[name="csrf-header"]').attr('content');
                 var csrfToken = $('meta[name="csrf-token"]').attr('content');

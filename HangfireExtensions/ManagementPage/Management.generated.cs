@@ -195,45 +195,34 @@ WriteLiteral("\" data-table-name=\"");
             
             #line default
             #line hidden
-WriteLiteral(@""" class=""js-jobs-list"">
-                <div class=""table-responsive"">
-                    <table class=""table"">
-                        <thead>
-                        <tr>
-                            <th class=""min-width"">№</th>
-                            <th>JSON</th>
-                            <th style=""width: 5%""></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr v-for=""(row, index) in rows"" class=""js-jobs-list-row"">
-                            <td>{{index + 1}}</td>
-                            <td class=""word-break"">
-                                <input type=""text"" v-model=""rows[index]""/>
-                            </td>
-                            <td>
-                                <button role=""button"" class=""management-button danger"" ");
+WriteLiteral("\" class=\"js-jobs-list\">\r\n                <div class=\"form-item\">\r\n               " +
+"     <label class=\"form-item__label\">Server Type</label>\r\n                    <d" +
+"iv class=\"input__wrapper\">\r\n                        <select name=\"serverType\" cl" +
+"ass=\"input__inner\" v-model=\"settings.serverType\">\r\n                            <" +
+"option value=\"SRV1\">SRV1</option>\r\n                            <option value=\"SR" +
+"V2\">SRV2</option>\r\n                            <option value=\"SRV3\">SRV3</option" +
+">\r\n                        </select>\r\n                    </div>\r\n              " +
+"  </div>\r\n                <div class=\"form-item\">\r\n                    <label cl" +
+"ass=\"form-item__label\">Server Url</label>\r\n                    <div class=\"input" +
+"__wrapper\">\r\n                        <input type=\"text\" class=\"input__inner\" v-m" +
+"odel=\"settings.serverUrl\" />\r\n                    </div>\r\n                </div>" +
+"\r\n                <div class=\"form-item\">\r\n                    <label class=\"for" +
+"m-item__label\">Username</label>\r\n                    <div class=\"input__wrapper\"" +
+">\r\n                        <input type=\"text\" class=\"input__inner\" v-model=\"sett" +
+"ings.username\" />\r\n                    </div>\r\n                </div>\r\n         " +
+"       <div class=\"form-item\">\r\n                    <label class=\"form-item__lab" +
+"el\">Password</label>\r\n                    <div class=\"input__wrapper\">\r\n        " +
+"                <input type=\"text\" class=\"input__inner\" v-model=\"settings.passwo" +
+"rd\" />\r\n                    </div>\r\n                </div>\r\n                <div" +
+" class=\"buttons\">\r\n                    <button type=\"button\" class=\"management-b" +
+"utton success\" ");
 
 
-WriteLiteral(@"@click=""remove(index)"">Remove</button>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <div class=""buttons"">
-                        <button role=""button"" ");
-
-
-WriteLiteral("@click=\"add\" class=\"management-button primary\">Add</button>\r\n                    " +
-"    <button role=\"button\" ");
-
-
-WriteLiteral("@click=\"save\" class=\"management-button success\">Save</button>\r\n                  " +
-"  </div>\r\n                </div>\r\n            </div>\r\n");
+WriteLiteral("@click=\"save\">Save</button>\r\n                </div>\r\n            </div>\r\n");
 
 
             
-            #line 70 "..\..\HangfireExtensions\ManagementPage\Management.cshtml"
+            #line 75 "..\..\HangfireExtensions\ManagementPage\Management.cshtml"
         }
 
             
