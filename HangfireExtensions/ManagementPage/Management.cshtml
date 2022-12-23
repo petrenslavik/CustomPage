@@ -21,10 +21,10 @@
 
     var data = ReadData(CurrentTable);
 }
-<link rel="stylesheet" type="text/css" href="@($"{ManagementPageExtensions.UrlPath[1..]}Resources/css/style.css")" />
-<script src="@($"{ManagementPageExtensions.UrlPath[1..]}Resources/js/vue.global.js")"></script>
-<script src="@($"{ManagementPageExtensions.UrlPath[1..]}Resources/js/axios.min.js")"></script>
-<script src="@($"{ManagementPageExtensions.UrlPath[1..]}Resources/js/app.js")"></script>
+<link rel="stylesheet" type="text/css" href="@($"/hangfire/{ManagementPageExtensions.UrlPath[1..]}Resources/css/style.css")" />
+<script src="@($"/hangfire/{ManagementPageExtensions.UrlPath[1..]}Resources/js/vue.global.js")"></script>
+<script src="@($"/hangfire/{ManagementPageExtensions.UrlPath[1..]}Resources/js/axios.min.js")"></script>
+<script src="@($"/hangfire/{ManagementPageExtensions.UrlPath[1..]}Resources/js/app.js")"></script>
 <div class="row">
     <div class="col-md-3">
         @Html.SidebarMenu(tables)
@@ -39,7 +39,9 @@
         }
         else
         {
-            <div id="app" data-rows="@JsonConvert.SerializeObject(data.Select(x=>JsonConvert.SerializeObject(x)))" data-save-url="@($"{ManagementPageExtensions.UrlPath[1..]}Actions/Save")" data-table-name="@CurrentTable.Name" class="js-jobs-list">
+            <div id="app" data-rows="@JsonConvert.SerializeObject(data.Select(x=>JsonConvert.SerializeObject(x)))" data-save-url="@($"/hangfire/{ManagementPageExtensions.UrlPath[1..]}Actions/Save")" data-table-name="@CurrentTable.Name" class="js-jobs-list">
+                <div class="alert alert-success" v-show="showSuccessNotification" style="display: none">Settings are saved</div>
+                <div class="alert alert-danger" v-show="showErrorNotification" style="display: none">Settings aren't saved</div>
                 <div class="form-item">
                     <label class="form-item__label">Server Type</label>
                     <div class="input__wrapper">

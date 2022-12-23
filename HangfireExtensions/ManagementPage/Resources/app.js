@@ -13,10 +13,12 @@ function ready() {
                     serverUrl: "",
                     username: "",
                     password: ""
-                }
+                },
+                showSuccessNotification: false,
+                showErrorNotification: false,
             };
             if (data.row["SettingJson"]) {
-                data.settings = data.row["SettingJson"];
+                data.settings = JSON.parse(data.row["SettingJson"]);
             }
             return data;
         },
@@ -39,7 +41,18 @@ function ready() {
                 var headers = {};
                 headers[csrfHeader] = csrfToken;
 
-                axios.post(this.saveUrl, form_data, { headers });
+                axios.post(this.saveUrl, form_data, { headers }).then(() => {
+                    this.showSuccessNotification = true;
+                    setTimeout(() => {
+                        this.showSuccessNotification = false;
+                    }, 4000);
+                }).catch(() => {
+                    this.showErrorNotification = true;
+
+                    setTimeout(() => {
+                        this.showErrorNotification = false;
+                    }, 4000);
+                });
             }
         }
     }).mount(html)

@@ -49,14 +49,14 @@ namespace CustomPage.HangfireExtensions.ManagementPage
         {
 
 
-WriteLiteral("\r\n");
+WriteLiteral("\n");
 
 
 
 
 
 
-WriteLiteral("\r\n");
+WriteLiteral("\n");
 
 
             
@@ -86,42 +86,42 @@ WriteLiteral("<link rel=\"stylesheet\" type=\"text/css\" href=\"");
 
             
             #line 24 "..\..\HangfireExtensions\ManagementPage\Management.cshtml"
-                                         Write($"{ManagementPageExtensions.UrlPath[1..]}Resources/css/style.css");
+                                         Write($"/hangfire/{ManagementPageExtensions.UrlPath[1..]}Resources/css/style.css");
 
             
             #line default
             #line hidden
-WriteLiteral("\" />\r\n<script src=\"");
+WriteLiteral("\" />\n<script src=\"");
 
 
             
             #line 25 "..\..\HangfireExtensions\ManagementPage\Management.cshtml"
-         Write($"{ManagementPageExtensions.UrlPath[1..]}Resources/js/vue.global.js");
+         Write($"/hangfire/{ManagementPageExtensions.UrlPath[1..]}Resources/js/vue.global.js");
 
             
             #line default
             #line hidden
-WriteLiteral("\"></script>\r\n<script src=\"");
+WriteLiteral("\"></script>\n<script src=\"");
 
 
             
             #line 26 "..\..\HangfireExtensions\ManagementPage\Management.cshtml"
-         Write($"{ManagementPageExtensions.UrlPath[1..]}Resources/js/axios.min.js");
+         Write($"/hangfire/{ManagementPageExtensions.UrlPath[1..]}Resources/js/axios.min.js");
 
             
             #line default
             #line hidden
-WriteLiteral("\"></script>\r\n<script src=\"");
+WriteLiteral("\"></script>\n<script src=\"");
 
 
             
             #line 27 "..\..\HangfireExtensions\ManagementPage\Management.cshtml"
-         Write($"{ManagementPageExtensions.UrlPath[1..]}Resources/js/app.js");
+         Write($"/hangfire/{ManagementPageExtensions.UrlPath[1..]}Resources/js/app.js");
 
             
             #line default
             #line hidden
-WriteLiteral("\"></script>\r\n<div class=\"row\">\r\n    <div class=\"col-md-3\">\r\n        ");
+WriteLiteral("\"></script>\n<div class=\"row\">\n    <div class=\"col-md-3\">\n        ");
 
 
             
@@ -131,7 +131,7 @@ WriteLiteral("\"></script>\r\n<div class=\"row\">\r\n    <div class=\"col-md-3\"
             
             #line default
             #line hidden
-WriteLiteral("\r\n    </div>\r\n    <div class=\"col-md-9\">\r\n        <h1 class=\"page-header\">");
+WriteLiteral("\n    </div>\n    <div class=\"col-md-9\">\n        <h1 class=\"page-header\">");
 
 
             
@@ -141,7 +141,7 @@ WriteLiteral("\r\n    </div>\r\n    <div class=\"col-md-9\">\r\n        <h1 clas
             
             #line default
             #line hidden
-WriteLiteral("</h1>\r\n");
+WriteLiteral("</h1>\n");
 
 
             
@@ -152,8 +152,8 @@ WriteLiteral("</h1>\r\n");
             
             #line default
             #line hidden
-WriteLiteral("            <div class=\"alert alert-warning\">\r\n                No tables configur" +
-"ed\r\n            </div>\r\n");
+WriteLiteral("            <div class=\"alert alert-warning\">\n                No tables configure" +
+"d\n            </div>\n");
 
 
             
@@ -180,7 +180,7 @@ WriteLiteral("\" data-save-url=\"");
 
             
             #line 42 "..\..\HangfireExtensions\ManagementPage\Management.cshtml"
-                                                                                                                              Write($"{ManagementPageExtensions.UrlPath[1..]}Actions/Save");
+                                                                                                                              Write($"/hangfire/{ManagementPageExtensions.UrlPath[1..]}Actions/Save");
 
             
             #line default
@@ -190,45 +190,48 @@ WriteLiteral("\" data-table-name=\"");
 
             
             #line 42 "..\..\HangfireExtensions\ManagementPage\Management.cshtml"
-                                                                                                                                                                                                         Write(CurrentTable.Name);
+                                                                                                                                                                                                                   Write(CurrentTable.Name);
 
             
             #line default
             #line hidden
-WriteLiteral("\" class=\"js-jobs-list\">\r\n                <div class=\"form-item\">\r\n               " +
-"     <label class=\"form-item__label\">Server Type</label>\r\n                    <d" +
-"iv class=\"input__wrapper\">\r\n                        <select name=\"serverType\" cl" +
-"ass=\"input__inner\" v-model=\"settings.serverType\">\r\n                            <" +
-"option value=\"SRV1\">SRV1</option>\r\n                            <option value=\"SR" +
-"V2\">SRV2</option>\r\n                            <option value=\"SRV3\">SRV3</option" +
-">\r\n                        </select>\r\n                    </div>\r\n              " +
-"  </div>\r\n                <div class=\"form-item\">\r\n                    <label cl" +
-"ass=\"form-item__label\">Server Url</label>\r\n                    <div class=\"input" +
-"__wrapper\">\r\n                        <input type=\"text\" class=\"input__inner\" v-m" +
-"odel=\"settings.serverUrl\" />\r\n                    </div>\r\n                </div>" +
-"\r\n                <div class=\"form-item\">\r\n                    <label class=\"for" +
-"m-item__label\">Username</label>\r\n                    <div class=\"input__wrapper\"" +
-">\r\n                        <input type=\"text\" class=\"input__inner\" v-model=\"sett" +
-"ings.username\" />\r\n                    </div>\r\n                </div>\r\n         " +
-"       <div class=\"form-item\">\r\n                    <label class=\"form-item__lab" +
-"el\">Password</label>\r\n                    <div class=\"input__wrapper\">\r\n        " +
-"                <input type=\"text\" class=\"input__inner\" v-model=\"settings.passwo" +
-"rd\" />\r\n                    </div>\r\n                </div>\r\n                <div" +
-" class=\"buttons\">\r\n                    <button type=\"button\" class=\"management-b" +
-"utton success\" ");
+WriteLiteral("\" class=\"js-jobs-list\">\n                <div class=\"alert alert-success\" v-show=\"" +
+"showSuccessNotification\" style=\"display: none\">Settings are saved</div>\n        " +
+"        <div class=\"alert alert-danger\" v-show=\"showErrorNotification\" style=\"di" +
+"splay: none\">Settings aren\'t saved</div>\n                <div class=\"form-item\">" +
+"\n                    <label class=\"form-item__label\">Server Type</label>\n       " +
+"             <div class=\"input__wrapper\">\n                        <select name=\"" +
+"serverType\" class=\"input__inner\" v-model=\"settings.serverType\">\n                " +
+"            <option value=\"SRV1\">SRV1</option>\n                            <opti" +
+"on value=\"SRV2\">SRV2</option>\n                            <option value=\"SRV3\">S" +
+"RV3</option>\n                        </select>\n                    </div>\n      " +
+"          </div>\n                <div class=\"form-item\">\n                    <la" +
+"bel class=\"form-item__label\">Server Url</label>\n                    <div class=\"" +
+"input__wrapper\">\n                        <input type=\"text\" class=\"input__inner\"" +
+" v-model=\"settings.serverUrl\" />\n                    </div>\n                </di" +
+"v>\n                <div class=\"form-item\">\n                    <label class=\"for" +
+"m-item__label\">Username</label>\n                    <div class=\"input__wrapper\">" +
+"\n                        <input type=\"text\" class=\"input__inner\" v-model=\"settin" +
+"gs.username\" />\n                    </div>\n                </div>\n              " +
+"  <div class=\"form-item\">\n                    <label class=\"form-item__label\">Pa" +
+"ssword</label>\n                    <div class=\"input__wrapper\">\n                " +
+"        <input type=\"text\" class=\"input__inner\" v-model=\"settings.password\" />\n " +
+"                   </div>\n                </div>\n                <div class=\"but" +
+"tons\">\n                    <button type=\"button\" class=\"management-button succes" +
+"s\" ");
 
 
-WriteLiteral("@click=\"save\">Save</button>\r\n                </div>\r\n            </div>\r\n");
+WriteLiteral("@click=\"save\">Save</button>\n                </div>\n            </div>\n");
 
 
             
-            #line 75 "..\..\HangfireExtensions\ManagementPage\Management.cshtml"
+            #line 77 "..\..\HangfireExtensions\ManagementPage\Management.cshtml"
         }
 
             
             #line default
             #line hidden
-WriteLiteral("    </div>\r\n</div>");
+WriteLiteral("    </div>\n</div>");
 
 
         }
