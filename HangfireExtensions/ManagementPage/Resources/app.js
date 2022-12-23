@@ -16,6 +16,7 @@ function ready() {
                 },
                 showSuccessNotification: false,
                 showErrorNotification: false,
+                showValidationError: false
             };
             if (data.row["SettingJson"]) {
                 data.settings = JSON.parse(data.row["SettingJson"]);
@@ -29,7 +30,19 @@ function ready() {
             add() {
                 this.rows.push("");
             },
+            validate() {
+                if (!this.settings.serverUrl) {
+                    this.showValidationError = true;
+                } else {
+                    this.showValidationError = false;
+                }
+            },
             save() {
+                if (!this.settings.serverUrl) {
+                    this.showValidationError = true;
+                    return;
+                }
+                this.showValidationError = false;
                 var form_data = new FormData();
                 form_data.append("tableName", this.tableName);
                 var newRow = Object.assign({}, this.row);

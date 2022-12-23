@@ -53,9 +53,12 @@
                     </div>
                 </div>
                 <div class="form-item">
-                    <label class="form-item__label">Server Url</label>
+                    <label class="form-item__label required">Server Url</label>
                     <div class="input__wrapper">
-                        <input type="text" class="input__inner" v-model="settings.serverUrl" />
+                        <input type="text" required="required" class="input__inner" v-model="settings.serverUrl" @@input="validate"/>
+                    </div>
+                    <div class="form-item__error" v-show="showValidationError" style="display:none">
+                        Please input the server url
                     </div>
                 </div>
                 <div class="form-item">

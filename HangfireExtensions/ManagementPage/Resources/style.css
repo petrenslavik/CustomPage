@@ -93,3 +93,15 @@
     transition: border-color .2s cubic-bezier(.645,.045,.355,1);
     width: 100%;
 }
+
+#app .required:after {
+    content: " *";
+    color: red;
+}
+
+#app .form-item__error {
+    color: #f56c6c;
+    font-size: 12px;
+    line-height: 1;
+    padding-top: 4px;
+}

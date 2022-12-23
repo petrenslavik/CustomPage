@@ -195,37 +195,52 @@ WriteLiteral("\" data-table-name=\"");
             
             #line default
             #line hidden
-WriteLiteral("\" class=\"js-jobs-list\">\n                <div class=\"alert alert-success\" v-show=\"" +
-"showSuccessNotification\" style=\"display: none\">Settings are saved</div>\n        " +
-"        <div class=\"alert alert-danger\" v-show=\"showErrorNotification\" style=\"di" +
-"splay: none\">Settings aren\'t saved</div>\n                <div class=\"form-item\">" +
-"\n                    <label class=\"form-item__label\">Server Type</label>\n       " +
-"             <div class=\"input__wrapper\">\n                        <select name=\"" +
-"serverType\" class=\"input__inner\" v-model=\"settings.serverType\">\n                " +
-"            <option value=\"SRV1\">SRV1</option>\n                            <opti" +
-"on value=\"SRV2\">SRV2</option>\n                            <option value=\"SRV3\">S" +
-"RV3</option>\n                        </select>\n                    </div>\n      " +
-"          </div>\n                <div class=\"form-item\">\n                    <la" +
-"bel class=\"form-item__label\">Server Url</label>\n                    <div class=\"" +
-"input__wrapper\">\n                        <input type=\"text\" class=\"input__inner\"" +
-" v-model=\"settings.serverUrl\" />\n                    </div>\n                </di" +
-"v>\n                <div class=\"form-item\">\n                    <label class=\"for" +
-"m-item__label\">Username</label>\n                    <div class=\"input__wrapper\">" +
-"\n                        <input type=\"text\" class=\"input__inner\" v-model=\"settin" +
-"gs.username\" />\n                    </div>\n                </div>\n              " +
-"  <div class=\"form-item\">\n                    <label class=\"form-item__label\">Pa" +
-"ssword</label>\n                    <div class=\"input__wrapper\">\n                " +
-"        <input type=\"text\" class=\"input__inner\" v-model=\"settings.password\" />\n " +
-"                   </div>\n                </div>\n                <div class=\"but" +
-"tons\">\n                    <button type=\"button\" class=\"management-button succes" +
-"s\" ");
+WriteLiteral(@""" class=""js-jobs-list"">
+                <div class=""alert alert-success"" v-show=""showSuccessNotification"" style=""display: none"">Settings are saved</div>
+                <div class=""alert alert-danger"" v-show=""showErrorNotification"" style=""display: none"">Settings aren't saved</div>
+                <div class=""form-item"">
+                    <label class=""form-item__label"">Server Type</label>
+                    <div class=""input__wrapper"">
+                        <select name=""serverType"" class=""input__inner"" v-model=""settings.serverType"">
+                            <option value=""SRV1"">SRV1</option>
+                            <option value=""SRV2"">SRV2</option>
+                            <option value=""SRV3"">SRV3</option>
+                        </select>
+                    </div>
+                </div>
+                <div class=""form-item"">
+                    <label class=""form-item__label required"">Server Url</label>
+                    <div class=""input__wrapper"">
+                        <input type=""text"" required=""required"" class=""input__inner"" v-model=""settings.serverUrl"" ");
+
+
+WriteLiteral(@"@input=""validate""/>
+                    </div>
+                    <div class=""form-item__error"" v-show=""showValidationError"" style=""display:none"">
+                        Please input the server url
+                    </div>
+                </div>
+                <div class=""form-item"">
+                    <label class=""form-item__label"">Username</label>
+                    <div class=""input__wrapper"">
+                        <input type=""text"" class=""input__inner"" v-model=""settings.username"" />
+                    </div>
+                </div>
+                <div class=""form-item"">
+                    <label class=""form-item__label"">Password</label>
+                    <div class=""input__wrapper"">
+                        <input type=""text"" class=""input__inner"" v-model=""settings.password"" />
+                    </div>
+                </div>
+                <div class=""buttons"">
+                    <button type=""button"" class=""management-button success"" ");
 
 
 WriteLiteral("@click=\"save\">Save</button>\n                </div>\n            </div>\n");
 
 
             
-            #line 77 "..\..\HangfireExtensions\ManagementPage\Management.cshtml"
+            #line 80 "..\..\HangfireExtensions\ManagementPage\Management.cshtml"
         }
 
             
